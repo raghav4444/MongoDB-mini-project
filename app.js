@@ -27,6 +27,12 @@ app.post('/create', async (req, res) => {
     res.redirect('/read');
 });
 
+app.get('/delete/:id', async (req, res) => {
+    let { id } = req.params;
+    await User.findByIdAndDelete(id);
+    res.redirect('/read');
+});
+
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
 });
